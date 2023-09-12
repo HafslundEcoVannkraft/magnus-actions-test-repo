@@ -42,3 +42,4 @@ jobs:
       - name: Run a multi-line script
         run: |
           echo "reading issue and creating action"
+          cat $GITHUB_EVENT_PATH
