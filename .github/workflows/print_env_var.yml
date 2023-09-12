@@ -25,10 +25,8 @@ jobs:
           echo "foo=bar" >> $GITHUB_ENV
 
       # Runs a set of commands using the runners shell
-      - name: print env var
+      - name: ${{ env.foo }}
         run: |
           echo ${{ env.foo }}
           echo $foo
-          echo "reading issue and creating action"
-          cat $GITHUB_EVENT_PATH | jq .issue.body > issue.txt
           echo ${{ github.env.foo }}
