@@ -21,6 +21,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: set env var
+        id: set-env-var
         run: |
           echo "foo=bar" | tee $GITHUB_ENV $GITHUB_OUTPUT
 
@@ -29,4 +30,4 @@ jobs:
         run: |
           echo ${{ env.foo }}
           echo $foo
-          echo ${{ github.env.foo }}
+          echo ${{ steps.set_env_var.outputs.foo }}
