@@ -25,6 +25,7 @@ jobs:
         run: |
           echo "foo=bar" | tee "$GITHUB_OUTPUT" "$GITHUB_ENV"
           echo "foo=bar" | tee "$GITHUB_OUTPUT"
+          echo "foo=bar" >> "$GITHUB_OUTPUT"
 
       # Runs a set of commands using the runners shell
       - name: ${{ env.foo }}
