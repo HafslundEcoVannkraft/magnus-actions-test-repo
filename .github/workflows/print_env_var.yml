@@ -24,14 +24,12 @@ jobs:
         id: set-env-var
         run: |
           echo "foo=bar" | tee "$GITHUB_OUTPUT" "$GITHUB_ENV"
-          # echo "foo=bar" | tee "$GITHUB_OUTPUT"
-          # echo "foo=bar" >> "$GITHUB_OUTPUT"
-          # echo "secret-number=somesecretval" >> "$GITHUB_OUTPUT"
+          echo "bar=foo" | tee "$GITHUB_OUTPUT" "$GITHUB_ENV"
 
-      # Runs a set of commands using the runners shell
       - name: ${{ env.foo }}
         run: |
           echo ${{ env.foo }}
           echo $foo
-          echo "echoing output"
+          echo ${{ env.bar }}
+          echo $bar
           echo ${{ steps.set-env-var.outputs.foo }}
