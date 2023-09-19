@@ -23,8 +23,8 @@ jobs:
       - name: set env var
         id: set-env-var
         run: |
-          echo "foo=bar" | tee "$GITHUB_OUTPUT" "$GITHUB_ENV"
-          echo "bar=foo" | tee "$GITHUB_OUTPUT" "$GITHUB_ENV"
+          echo "foo=bar" | tee -a "$GITHUB_OUTPUT" "$GITHUB_ENV"
+          echo "bar=foo" | tee -a "$GITHUB_OUTPUT" "$GITHUB_ENV"
 
       - name: ${{ env.foo }}
         run: |
