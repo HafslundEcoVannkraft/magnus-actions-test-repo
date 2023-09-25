@@ -42,5 +42,6 @@ jobs:
           # https://github.com/HafslundEcoVannkraft/magnus-actions-test-repo/blob/main/.github/workflows/blank.yml
           # https://github.com/HafslundEcoVannkraft/magnus-actions-test-repo
           import os
-          current_file_path = os.path.realpath(__file__).partition(os.environ['GITHUB_WORKSPACE'])[2]
+          print(os.path.realpath(__file__))
+          print(sys.argv[0])
           print(f"https://github.com/{os.environ['GITHUB_REPOSITORY']}/blob/{os.environ['branch']}/{current_file_path}")
