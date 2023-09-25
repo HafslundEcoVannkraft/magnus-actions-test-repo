@@ -35,7 +35,7 @@ jobs:
           echo ${{ steps.set-env-var.outputs.foo }}
 
       - name: python print URL
-        shell: python3
+        shell: bash -c "python3 {0}"
         run: |
           import os
           print(f"https://github.com/{os.environ['GITHUB_REPOSITORY']}")
