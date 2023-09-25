@@ -45,4 +45,4 @@ jobs:
           import sys
           print(os.path.realpath(__file__))
           print(sys.argv[0])
-          print(f"https://github.com/{os.environ['GITHUB_REPOSITORY']}/blob/{os.environ['branch']}/{current_file_path}")
+          print(f"https://github.com/{os.environ['GITHUB_REPOSITORY']}/blob/{os.environ['branch']}/")
