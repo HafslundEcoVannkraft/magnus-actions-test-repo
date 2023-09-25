@@ -42,6 +42,7 @@ jobs:
           # https://github.com/HafslundEcoVannkraft/magnus-actions-test-repo/blob/main/.github/workflows/blank.yml
           # https://github.com/HafslundEcoVannkraft/magnus-actions-test-repo
           import os
+          import sys
           print(os.path.realpath(__file__))
           print(sys.argv[0])
           print(f"https://github.com/{os.environ['GITHUB_REPOSITORY']}/blob/{os.environ['branch']}/{current_file_path}")
