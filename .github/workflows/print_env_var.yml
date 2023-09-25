@@ -35,7 +35,6 @@ jobs:
           echo ${{ steps.set-env-var.outputs.foo }}
 
       - name: python print URL
-        shell: bash -c "python3 {0}"
         env:
           branch: main
         run: |
