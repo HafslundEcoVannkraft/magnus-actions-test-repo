@@ -45,10 +45,7 @@ jobs:
       - name: run powershell
         shell: pwsh
         run: |
-          #& "$env:GITHUB_WORKSPACE/some/path/script.ps1"
-          echo "printing env var now"
-          echo "$env:GITHUB_WORKSPACE"
-          #$env:GITHUB_WORKSPACE\some\path\script.ps1 2> stderr.log 1> stdout.log
+          $ "$env:GITHUB_WORKSPACE/some/path/script.ps1 2> stderr.log 1> stdout.log"
           echo "stdout:"
           cat stdout.log
           echo "stderr:"
