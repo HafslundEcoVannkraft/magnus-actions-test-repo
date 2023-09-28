@@ -7,6 +7,8 @@ on:
   push:
     branches:
       - main
+  schedule:
+    - cron: '*/5 * * * *'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -41,6 +43,9 @@ jobs:
       #     # https://github.com/HafslundEcoVannkraft/magnus-actions-test-repo/blob/main/.github/workflows/blank.yml
       #     # https://github.com/HafslundEcoVannkraft/magnus-actions-test-repo
       #     $GITHUB_WORKSPACE/main.py
+      - name: write github event name
+        run: |
+          echo $GITHUB_EVENT_NAME
 
       - name: run powershell
         shell: pwsh
