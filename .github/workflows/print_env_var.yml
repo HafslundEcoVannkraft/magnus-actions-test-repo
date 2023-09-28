@@ -20,24 +20,29 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      - name: set env var
-        id: set-env-var
-        run: |
-          echo "foo=bar" | tee -a "$GITHUB_OUTPUT" "$GITHUB_ENV"
-          echo "bar=foo" | tee -a "$GITHUB_OUTPUT" "$GITHUB_ENV"
+      # - name: set env var
+      #   id: set-env-var
+      #   run: |
+      #     echo "foo=bar" | tee -a "$GITHUB_OUTPUT" "$GITHUB_ENV"
+      #     echo "bar=foo" | tee -a "$GITHUB_OUTPUT" "$GITHUB_ENV"
 
-      - name: ${{ env.foo }}
-        run: |
-          echo ${{ env.foo }}
-          echo $foo
-          echo ${{ env.bar }}
-          echo $bar
-          echo ${{ steps.set-env-var.outputs.foo }}
+      # - name: ${{ env.foo }}
+      #   run: |
+      #     echo ${{ env.foo }}
+      #     echo $foo
+      #     echo ${{ env.bar }}
+      #     echo $bar
+      #     echo ${{ steps.set-env-var.outputs.foo }}
 
-      - name: python print URL
-        env:
-          branch: main
+      # - name: python print URL
+      #   env:
+      #     branch: main
+      #   run: |
+      #     # https://github.com/HafslundEcoVannkraft/magnus-actions-test-repo/blob/main/.github/workflows/blank.yml
+      #     # https://github.com/HafslundEcoVannkraft/magnus-actions-test-repo
+      #     $GITHUB_WORKSPACE/main.py
+
+      - name: run powershell
+        shell: pwsh
         run: |
-          # https://github.com/HafslundEcoVannkraft/magnus-actions-test-repo/blob/main/.github/workflows/blank.yml
-          # https://github.com/HafslundEcoVannkraft/magnus-actions-test-repo
-          $GITHUB_WORKSPACE/main.py
+          & "$GITHUB_WORKSPACE/some/path/main.ps1"
