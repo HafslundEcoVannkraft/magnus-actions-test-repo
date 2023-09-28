@@ -1,3 +1,3 @@
 
-Write-Host "dette er stdout"
-Write-Error "dette er stderr"
+Write-Host "this is stdout"
+Write-Error "this is stderr"
