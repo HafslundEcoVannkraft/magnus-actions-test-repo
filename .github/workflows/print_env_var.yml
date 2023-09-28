@@ -45,4 +45,4 @@ jobs:
       - name: run powershell
         shell: pwsh
         run: |
-          & "$env:GITHUB_WORKSPACE/some/path/main.ps1"
+          & "$env:GITHUB_WORKSPACE/some/path/script.ps1"
