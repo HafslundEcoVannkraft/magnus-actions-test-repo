@@ -1,3 +1,3 @@
 
 Write-Output "this is stdout"
-Write-Error "this is stderr"
+[System.Console]::Error.WriteLine("this is stderr")
