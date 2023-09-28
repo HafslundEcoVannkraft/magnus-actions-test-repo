@@ -45,7 +45,12 @@ jobs:
       - name: run powershell
         shell: pwsh
         run: |
-          & "$env:GITHUB_WORKSPACE/some/path/script.ps1" 3> warning.log 2> stderr.log 1> stdout.log
+          try {
+            & "$env:GITHUB_WORKSPACE/some/path/script.ps1" 3> warning.log 1> stdout.log
+          } catch {
+            Write-Warning $_ > stderr.log
+          }
+          
       
       - name: print errors
         if: failure()
