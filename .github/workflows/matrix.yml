@@ -28,6 +28,7 @@ jobs:
       group: ${{ github.workflow }}-${{ github.ref }}
       cancel-in-progress: false
     strategy:
+      max-parallel: 1
       matrix:
         option: ${{fromJson(needs.generate-matrix.outputs.matrix)}}
     steps:
