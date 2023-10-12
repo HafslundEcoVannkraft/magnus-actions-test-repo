@@ -26,6 +26,7 @@ jobs:
       shell: python3 {0}
       run: |
         import json
+        import os
 
         # Parse the input as JSON
         parsed_json = json.loads('${{ steps.set-matrix.outputs.matrix }}')
