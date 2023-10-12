@@ -21,18 +21,25 @@ jobs:
       id: set-matrix
       run: echo "matrix=$(cat matrix.json)" >> $GITHUB_OUTPUT
 
-  use-matrix:
-    needs: generate-matrix
-    runs-on: ubuntu-latest
-    concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}
-      cancel-in-progress: false
-    strategy:
-      max-parallel: 1
-      matrix:
-        option: ${{fromJson(needs.generate-matrix.outputs.matrix)}}
-    steps:
-    - name: Use matrix value
+    - name: Check if Rover Plan is required
+      id: check-rover-plan-required
+      shell: python3 {0}
       run: |
-        date
-        echo "Matrix value is ${{ matrix.option }}"
+        import json
+
+        # Parse the input as JSON
+        parsed_json = json.loads('${{ steps.set-matrix.outputs.matrix }}')
+
+        # Check if the parsed JSON is a list and has a length greater than 0
+        run_rover_plan = isinstance(parsed_json, list) and len(parsed_json) > 0
+
+        # Print the result
+        run_rover_plan_val = str(run_rover_plan).lower()
+        print(f"run_rover_plan={run_rover_plan_val}")
+        with open("$GITHUB_OUTPUT", "a") as f:
+          f.write(f"run_rover_plan={run_rover_plan_val}\n")
+    
+    - name: check value of run_rover_plan
+      run: |
+        echo "${{ steps.check-rover-plan-required.outputs.run_rover_plan }}"
+    
