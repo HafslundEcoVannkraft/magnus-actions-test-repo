@@ -31,7 +31,13 @@ jobs:
         import os
 
         # Parse the input as JSON
-        parsed_json = json.loads('${{ steps.set-matrix.outputs.matrix }}')
+        input_string = '${{ steps.set-matrix.outputs.matrix }}'
+
+        try:
+          parsed_json = json.loads(input_string)
+        except json.decoder.JSONDecodeError:
+          print(f"invalid JSON: {input_string}")
+          exit(1)
 
         # Check if the parsed JSON is a list and has a length greater than 0
         run_rover_plan = isinstance(parsed_json, list) and len(parsed_json) > 0
