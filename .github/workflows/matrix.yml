@@ -16,7 +16,8 @@ jobs:
       run: |
         # we make a JSON list of 10 strings
         #echo '['$(for i in $(seq 1 10); do echo -n "\"test$i\","; done | sed 's/,$//')']' > matrix.json
-        echo '[]' > matrix.json
+        #echo '[]' > matrix.json
+        echo '[' > matrix.json
 
     - name: Set matrix for next job
       id: set-matrix
