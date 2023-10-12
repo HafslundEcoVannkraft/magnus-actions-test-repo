@@ -30,7 +30,6 @@ jobs:
         import json
         import os
 
-        # Parse the input as JSON
         input_string = '${{ steps.set-matrix.outputs.matrix }}'
 
         try:
@@ -39,14 +38,10 @@ jobs:
           print(f"invalid JSON: {input_string}")
           exit(1)
 
-        # Check if the parsed JSON is a list and has a length greater than 0
         run_rover_plan = isinstance(parsed_json, list) and len(parsed_json) > 0
 
-        # Print the result
-        run_rover_plan_val = str(run_rover_plan).lower()
-        print(f"run_rover_plan={run_rover_plan_val}")
         with open(os.environ['GITHUB_OUTPUT'], 'a') as fh:
-          print(f"run_rover_plan={run_rover_plan_val}\n", file=fh)
+          print(f"run_rover_plan={str(run_rover_plan).lower()}\n", file=fh)
     
     - name: check value of run_rover_plan
       run: |
