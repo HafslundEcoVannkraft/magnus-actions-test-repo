@@ -36,8 +36,8 @@ jobs:
         # Print the result
         run_rover_plan_val = str(run_rover_plan).lower()
         print(f"run_rover_plan={run_rover_plan_val}")
-        with open("$GITHUB_OUTPUT", "a") as f:
-          f.write(f"run_rover_plan={run_rover_plan_val}\n")
+        with open(os.environ['GITHUB_OUTPUT'], 'a') as fh:
+          print(f"run_rover_plan={run_rover_plan_val}\n", file=fh)
     
     - name: check value of run_rover_plan
       run: |
