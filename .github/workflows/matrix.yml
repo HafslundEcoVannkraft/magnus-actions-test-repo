@@ -11,6 +11,10 @@ jobs:
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
+    - name: Check shred
+      run: |
+        shred --help
+
     - name: Generate matrix
       id: generate
       run: |
