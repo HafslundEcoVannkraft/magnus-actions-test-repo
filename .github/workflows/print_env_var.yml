@@ -5,9 +5,9 @@ name: print env var
 
 on:
   workflow_dispatch:
-  # push:
-  #   branches:
-  #     - main
+  push:
+    branches:
+      - main
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -20,49 +20,20 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-
-      # - name: set env var
-      #   id: set-env-var
-      #   run: |
-      #     echo "foo=bar" | tee -a "$GITHUB_OUTPUT" "$GITHUB_ENV"
-      #     echo "bar=foo" | tee -a "$GITHUB_OUTPUT" "$GITHUB_ENV"
-
-      # - name: ${{ env.foo }}
-      #   run: |
-      #     echo ${{ env.foo }}
-      #     echo $foo
-      #     echo ${{ env.bar }}
-      #     echo $bar
-      #     echo ${{ steps.set-env-var.outputs.foo }}
-
-      # - name: python print URL
-      #   env:
-      #     branch: main
-      #   run: |
-      #     # https://github.com/HafslundEcoVannkraft/magnus-actions-test-repo/blob/main/.github/workflows/blank.yml
-      #     # https://github.com/HafslundEcoVannkraft/magnus-actions-test-repo
-      #     $GITHUB_WORKSPACE/main.py
-      - name: write github event name
-        run: |
-          echo $GITHUB_EVENT_NAME
-
-      - name: run powershell
-        shell: pwsh
-        run: |
-          try {
-            & "$env:GITHUB_WORKSPACE/some/path/script.ps1" 3> warning.log 1> stdout.log
-          } catch {
-            Write-Output $_ > stderr.log
-            throw $_
-          }
-          
       
-      - name: print errors
-        if: failure()
+      - name: run export
+        run: | 
+          export
+
+      - name: export env
         run: |
-          echo "stdout:"
-          cat stdout.log
-          echo "stderr:"
-          cat stderr.log
-          echo "warning:"
-          cat warning.log
+          set -a
+          a=foo
+          b=bar
+          $GITHUB_WORKSPACE/.github/workflows/scripts/persist-exported-env.sh
+
+      - name: print env
+        run: | 
+          echo $a
+          echo $b
+        
