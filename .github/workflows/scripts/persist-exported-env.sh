@@ -4,4 +4,4 @@ while read -r env_var_declaration
 do
     echo "${env_var_declaration}"
     echo "${env_var_declaration}" | grep "=" >> $GITHUB_ENV
-done < /tmp/env_vars
+done < $(grep -vE '^[A-Z]+=*' /tmp/env_vars)
