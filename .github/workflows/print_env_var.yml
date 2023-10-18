@@ -25,6 +25,7 @@ jobs:
         run: | 
           stat $GITHUB_ENV
           echo $GITHUB_ENV
+          echo foo=bar >> $GITHUB_ENV
           cat $GITHUB_ENV
 
       - name: export env
