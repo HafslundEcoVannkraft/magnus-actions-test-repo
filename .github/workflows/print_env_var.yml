@@ -21,9 +21,11 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       
-      - name: run export
+      - name: test GITHUB_ENV
         run: | 
-          export
+          stat $GITHUB_ENV
+          echo $GITHUB_ENV
+          cat $GITHUB_ENV
 
       - name: export env
         run: |
