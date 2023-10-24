@@ -24,10 +24,10 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       
-      - name: test GITHUB_ENV
+      - name: echo plan file
         run: | 
-          stat $GITHUB_ENV
-          echo $GITHUB_ENV
+          plan_file="$RUNNER_TEMP/$(cat /dev/urandom | tr -dc 'a-z0-9' | fold -w 16 | head -n 1).tfplan"
+          echo "plan_file=$plan_file"
 
       - name: export env
         id: export-env
