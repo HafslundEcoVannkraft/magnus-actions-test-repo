@@ -35,9 +35,9 @@ jobs:
           changed_dir = "${{ env.directory }}"
           parts = changed_dir.split('/')
           if len(parts) == 3 and parts[0] == '2999-app-landing-zones' and parts[2][:14] == '1_subscription':
-            echo "new lz"
+            print("new lz")
           else:
-            echo "not new lz"
+            print("not new lz")
       
       - name: Check if new LZ2
         shell: python3 {0}
@@ -50,9 +50,9 @@ jobs:
           changed_dir = "${{ env.directory }}"
           parts = changed_dir.split('/')
           if len(parts) == 3 and parts[0] == '2999-app-landing-zones' and parts[2][:14] == '1_subscription':
-            echo "new lz"
+            print("new lz")
           else:
-            echo "not new lz"
+            print("not new lz")
 
       - name: echo plan file
         run: | 
