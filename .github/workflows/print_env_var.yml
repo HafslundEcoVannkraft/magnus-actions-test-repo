@@ -12,7 +12,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  job-no-approval:
+  job-name-appears-in-step:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     outputs:
@@ -24,7 +24,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       
-      - name: Check if new LZ
+      - name: job name ${{ github.job.name }}
         shell: python3 {0}
         env:
           directory: 2999-app-landing-zones/alfa/1_subscription_identity
