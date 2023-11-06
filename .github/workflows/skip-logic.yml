@@ -13,7 +13,7 @@ jobs:
   
   job2:
     runs-on: ubuntu-latest
-    if: false
+    if: true
     outputs:
       job3_should_run: ${{ steps.step2.outputs.job3_should_run }}
     needs: job1
