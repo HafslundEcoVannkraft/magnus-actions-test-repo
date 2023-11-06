@@ -21,7 +21,10 @@ jobs:
   
   job3:
     runs-on: ubuntu-latest
-    if: always() && needs.job1.result == 'success' && (needs.job2.result == 'success' || needs.job2.result == 'skipped')
+    if: |
+      always() && 
+      needs.job1.result == 'success' && 
+      (needs.job2.result == 'success' || needs.job2.result == 'skipped')
     needs: [job1, job2]
     steps:
       - name: Step 3
