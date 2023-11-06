@@ -9,11 +9,11 @@ jobs:
     steps:
       - name: Step 1
         run: |
-          exit 1
+          exit 0
   
   job2:
     runs-on: ubuntu-latest
-    if: false
+    if: true
     needs: job1
     steps:
       - name: Step 2
