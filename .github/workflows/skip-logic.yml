@@ -36,7 +36,7 @@ jobs:
     if: ${{ needs.job2.outputs.job3_should_run == 'false' }}
     steps:
       - name: Step 3
-        run: exit 1
+        run: exit 0
 
   job5:
     runs-on: ubuntu-latest
