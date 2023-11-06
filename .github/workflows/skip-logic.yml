@@ -20,7 +20,7 @@ jobs:
     steps:
       - name: Step 2
         id: step2
-        run: echo job3_should_run=true >> $GITHUB_OUTPUT
+        run: echo job3_should_run=false >> $GITHUB_OUTPUT
 
   job3:
     runs-on: ubuntu-latest
@@ -36,7 +36,7 @@ jobs:
     if: ${{ needs.job2.outputs.job3_should_run == 'false' }}
     steps:
       - name: Step 3
-        run: echo "This is job 3"
+        run: exit 1
 
   job5:
     runs-on: ubuntu-latest
