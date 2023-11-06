@@ -13,11 +13,11 @@ jobs:
   
   job2:
     runs-on: ubuntu-latest
-    if: false
+    if: true
     needs: job1
     steps:
       - name: Step 2
-        run: exit 0
+        run: exit 1
   
   job3:
     runs-on: ubuntu-latest
