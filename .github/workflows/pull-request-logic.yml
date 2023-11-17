@@ -1,18 +1,24 @@
 
 name: My Workflow
 
-on: [push]
+on:
+  pull_request:
+    branches: [ master ]
 
 jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
-      - name: Step 1
+      - uses: actions/checkout@v4
+      - name: print github env vars
         run: |
-          exit 0
-      - name: show fs
-        run: |
-          df --output=target $GITHUB_WORKSPACE
+          current_branch=$(git rev-parse --abbrev-ref HEAD)
+          echo "current_branch according to git: $current_branch"
+          echo "GITHUB_REF: $GITHUB_REF"
+          echo "GITHUB_HEAD_REF: $GITHUB_HEAD_REF"
+          echo "GITHUB_BASE_REF: $GITHUB_BASE_REF"
+          echo "GITHUB_EVENT_NAME: $GITHUB_EVENT_NAME"
+          
   
 #   job2:
 #     runs-on: ubuntu-latest
