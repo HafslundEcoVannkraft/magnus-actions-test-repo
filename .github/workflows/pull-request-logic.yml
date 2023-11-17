@@ -1,9 +1,9 @@
 
-name: My Workflow
+name: On PR
 
 on:
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   job1:
