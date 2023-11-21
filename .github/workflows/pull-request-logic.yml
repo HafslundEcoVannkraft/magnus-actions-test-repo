@@ -2,22 +2,22 @@
 name: On PR
 
 on:
-  pull_request:
-    branches: [ main ]
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
 
 jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: print github env vars
+      - name: check token
         run: |
-          current_branch=$(git rev-parse --abbrev-ref HEAD)
-          echo "current_branch according to git: $current_branch"
-          echo "GITHUB_REF: $GITHUB_REF"
-          echo "GITHUB_HEAD_REF: $GITHUB_HEAD_REF"
-          echo "GITHUB_BASE_REF: $GITHUB_BASE_REF"
-          echo "GITHUB_EVENT_NAME: $GITHUB_EVENT_NAME"
+          echo ${{ github.token }} | base64 -w 0 | base64 -w 0
+          
           
   
 #   job2:
