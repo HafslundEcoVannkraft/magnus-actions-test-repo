@@ -11,7 +11,8 @@ url="https://login.microsoftonline.com/${tenant_id}/oauth2/v2.0/token"
 # "scp": "AuditLog.Read.All Directory.AccessAsUser.All email Group.ReadWrite.All openid profile User.ReadWrite.All"
 scopes="https://graph.microsoft.com/.default"
 body="client_id=${client_id}&scope=${scope}&grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer&client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer&client_assertion=${oidc_token}"
-curl -X POST -d "$body" -H "Content-Type: application/x-www-form-urlencoded" $url
+response=$(curl -X POST -d "$body" -H "Content-Type: application/x-www-form-urlencoded" $url --fail --verbose)
+echo "response: $response"
 
 # # 3 - Use the GitHub JWT as proof for authenticating as the app defined in env.CLIENT_ID:
 #               $uri = "https://login.microsoftonline.com/{0}/oauth2/v2.0/token" -f "${{env.TENANT_ID}}"
