@@ -5,6 +5,8 @@
 # loop or other flow control structures.
 
 oidc_token=$(curl -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=api://AzureADTokenExchange")
+echo "oidc_token: $oidc_token"
+exit 0
 az login --service-principal --username 189ee463-4982-4960-a6de-c46d9c4397a8 --tenant 18704e99-efc6-4fc7-9f7d-529190c7a11a --federated-token $oidc_token --allow-no-subscriptions
 az resource show --ids /subscriptions/142a6373-05c8-4f0c-b84c-66d3100aa6bc/resourceGroups/scope1
 
