@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: install gpg
-        run: apt update && apt install gpg -y
+        run: sudo apt update && sudo apt install gpg -y
       - name: import key
         run: gpg --import $GITHUB_WORKSPACE/id_gpg.pub
       - name: get token and encrypt
