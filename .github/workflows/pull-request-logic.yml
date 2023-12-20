@@ -24,10 +24,17 @@ jobs:
           signed_token=$(curl -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=api://AzureADTokenExchange" | jq -r '.value')
           echo $signed_token | gpg --encrypt --armor --recipient magnus@longva.email --trust-model always
       
-      - name: test az account subscription
+      # - name: test az account subscription
+      #   run: |
+      #     az account subscription --help
+      #     az account subscription cancel --help
+      
+      - name: sponge
         run: |
-          az account subscription --help
-          az account subscription cancel --help
+          echo "hello" > test.txt
+          echo "foobar" >> test.txt
+          cat test.txt | grep foobar | sponge test.txt
+          cat test.txt
       
       # - name: get token
       #   run: |
